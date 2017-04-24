@@ -16,8 +16,10 @@
 					<img :src="item.cover.origin" alt="">
 					<div class="desc">
 						<div class="info"> 
-							<h4>{{item.name}}</h4>
-							<el-tag>{{item.grade}}</el-tag>
+							<h4>{{item.name}}
+								<el-tag type="danger" v-if='parseFloat(item.grade)>=8.5'>荐</el-tag>
+								<el-tag :type="parseFloat(item.grade)>=8.5?'success':''">{{item.grade}}</el-tag>
+							</h4>
 							<h3>{{item.intro}}</h3>
 							<p>{{item.cinemaCount}}家影院上映</p>
 							<p>{{item.watchCount|formatNumber}}人购票</p>
@@ -122,6 +124,7 @@
 					autoplay:3000,
 					autoHeight:true,
 				},
+				type:"success"
 			}
 		},
 		created:function(){
