@@ -1,8 +1,12 @@
 <template>
-	<div id="header" :class="{fix:goTop}">
-		<a @click="showNav" class="go-menu">
+	<div id="header" :class="" @click='showtop'>
+		<a @click.stop="showNav" class="go-menu" :class="{active:this.$store.getters.leftNavState}">
 			<i class="el-icon-menu"></i>
 		</a>
+		<div class="title">
+			<p>{{com.title}}</p>
+			<!-- <a class="go-city">广州<i class="icon iconfont icon-bottom"></i></a> -->
+		</div>
 	</div>
 </template>
 <script>
@@ -14,14 +18,14 @@
 			}
 		},
 		props:{
-			com:{
-				type:Object
-			}
+			com:Object,
+			showtop:Function
 		},
 		methods:{
 			showNav:function(){
-				return this.$store.dispatch('changeLeftNavState',true)
-			}
+				var current = this.$store.getters.leftNavState;
+				return this.$store.dispatch('changeLeftNavState',!current)
+			},
 		}
 	}
 </script>
