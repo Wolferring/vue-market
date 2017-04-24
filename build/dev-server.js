@@ -61,6 +61,7 @@ app.use('/api',proxyMiddleware({
   target:'http://m.maizuo.com/v4',
   changeOrigin:true
 }))
+//路由转发
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
