@@ -23,7 +23,7 @@
 				v-for="item in nowList"
 				:key="item"
 				class="item list-complete-item"
-				:to="{name:'cinema',params:{id:item.id}}"
+				:to="{name:'cinema',params:{id:item.id,film:item.name}}"
 			>
 				<div class="cover">
 					<img :src="item.poster.thumbnail" alt="">
