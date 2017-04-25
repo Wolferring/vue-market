@@ -81,7 +81,7 @@
 				},
 				{
 					name:'正在上映',
-					path:'/film/now-playing'
+					path:'/film/now'
 				}
 			]
 			return {

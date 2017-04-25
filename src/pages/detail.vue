@@ -19,6 +19,11 @@
 				</a>
 				</p>
 				<p class="brief">{{detail.synopsis}}</p>
+				<el-row type="flex" justify="center">
+					<router-link v-if="detail.isNowPlaying" :to="{name:'cinema',params:{id:detail.id}}" class="go-pay">
+						<el-button  type="primary">立即购票</el-button>
+					</router-link>
+				</el-row>
 			</article>
 		</div>
 		<div class="box">

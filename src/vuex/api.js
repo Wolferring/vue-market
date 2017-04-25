@@ -21,11 +21,11 @@ export default {
     /**
      * 获取首页热映电影
      */
-    getNowPlaying:(cb)=>func_axios(url + 'film/now-playing?_t=' + new Date()*1 +'&page=1&count=8',cb),
+    getNowPlaying:(cb)=>func_axios(url + 'film/now-playing?_t=' + new Date()*1 +'&page=1&count=10',cb),
     /**
      * 获取热映列表
      */
-    getNowPlayList:(page,cb)=>func_axios(url + 'film/now-playing?page=' + page + '&count=10',cb),
+    getNowPlayList:(page,cb)=>func_axios(url + 'film/now-playing?page=' + page + '&count=15',cb),
     /**
      * 获取首页即将上映电影
      */
