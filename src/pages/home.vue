@@ -27,7 +27,7 @@
 					</div>
 				</router-link>
 			</div>
-			<router-link :to="{name:'film',params:{type:'now-playing'}}" class="go-more">
+			<router-link :to="{name:'film',params:{type:'now'}}" class="go-more">
 				更多热映电影
 			</router-link>
 		</div>
@@ -46,7 +46,7 @@
 				</div>
 				</router-link>
 			</div>
-			<router-link :to="{name:'film',params:{type:'coming-soon'}}" class="go-more">
+			<router-link :to="{name:'film',params:{type:'coming'}}" class="go-more">
 				更多即将上映电影
 			</router-link>
 		</div>

@@ -2,33 +2,33 @@
 	<div id="sidebar" @touchmove.stop.prevent>
 		<div class="sidebar-container" @click='hideNav' v-show="show">
 			<div class="sidebar-overlay">
-				<transition name="tranlate" mode="">
-					<nav v-show='show'>
-						<h3>菜单</h3>
-						<ul>
-							<li v-for='menu in menuList'>
-								<router-link :to='menu.path'>
-									<span>{{menu.name}}</span>
-									<i class="icon iconfont icon-right"></i>
-								</router-link>
-							</li>
-						</ul>
-					</nav>
-				</transition>
 			</div>
+			<transition name="tranlate" mode="">
+				<nav v-show='show'>
+					<h3>菜单</h3>
+					<ul>
+						<li v-for='menu in menuList'>
+							<router-link :to='menu.path'>
+								<span>{{menu.name}}</span>
+								<i class="icon iconfont icon-right"></i>
+							</router-link>
+						</li>
+					</ul>
+				</nav>
+			</transition>
 		</div>
 	</div>
 </template>
 <style lang="less">
 	@import '../assets/var.less';
 	.tranlate-enter-active, .tranlate-leave-active {
-	  transform:translate(10px,0)
+	  transform:translate(0,0)
 	}
 	.tranlate-enter, .tranlate-leave-active {
 	  transform:translate(-100%,0)
 	}
 	#sidebar{
-		transition:all .3s ease;
+		transition:all .3s easein;
 		.sidebar-container{
 			background-color: rgba(0,0,0,.7);
 			position: fixed;
@@ -38,33 +38,40 @@
 			bottom:0;
 			z-index: 501;
 			nav{
-				background-color: @maincolor;
+				background-color: #272727;
 				position: absolute;
 				display: block;
-				top: 2rem;
+				top: 3rem;
 				right: 110px;
 				bottom: 0;
 				left: 0;
 				color:#fff;
 				padding: 0 15px;
 				transition: all .5s ease;
+				h3{
+					padding: 2vh 0;
+				}
 				li{
 					padding:.5rem 0;
 					padding-left: 0;
 					font-size: .75rem;
 					line-height: 2rem;
-					border-bottom: 1px solid #fff;
+					border-bottom: 1px solid #4E4E4E;
 					position: relative;
-					&:after{
-						content: "\E602";
-						font-family: element-icons!important;
-						position: absolute;
-						right: 0;
-						top:50%;
-						transform:translate(0,-50%)
-					}
 					a{
+						&:after{
+							content: "\E602";
+							font-family: element-icons!important;
+							position: absolute;
+							right: 0;
+							top:50%;
+							transform:translate(0,-50%)
+						}
 						display: block;
+						&.active{
+							color:@maincolor;
+							font-weight: bold;
+						}
 					}
 				}
 			}

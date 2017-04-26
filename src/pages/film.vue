@@ -23,7 +23,7 @@
 				v-for="item in nowList"
 				:key="item"
 				class="item list-complete-item"
-				:to="{name:'cinema',params:{id:item.id,film:item.name}}"
+				:to="{name:'detail',params:{id:item.id}}"
 			>
 				<div class="cover">
 					<img :src="item.poster.thumbnail" alt="">
@@ -49,7 +49,7 @@
 				v-for="item in comingList"
 				:key="item"
 				class="item list-complete-item"
-				:to="{name:'cinema',params:{id:item.id}}"
+				:to="{name:'detail',params:{id:item.id}}"
 			>
 				<div class="cover">
 					<img :src="item.poster.thumbnail" alt="">
@@ -147,8 +147,9 @@
 	#film{
 		.tabs{
 			border-bottom: 1px solid @maincolor;
-			margin: 0 5vw;
+			margin: 0;
 			display: flex;
+			background-color: #fff;
 			.item{
 				flex:1;
 				display: inline-block;
@@ -165,20 +166,27 @@
 		.tab-content{
 			margin:0 5vw;
 			.item{
-				padding: 2vh 0;
+				padding-right: 5vw;
 				display: flex;
+				background-color: #fff;
+				margin: 2vh 0;
 				.cover{
+					flex:1;
 					width: 25vw;
+					align-self: stretch;
 					margin-right: 2vw;
 					img{
 						width: 100%;
+						height: 100%;
+						display: block;
 					}
 				}
 				.info{
+					flex:2;
 					width: 58vw;
 					h3{
 						font-size: .8rem;
-						line-height: 2;
+						line-height: 2.5;
 						font-weight: normal;
 					}
 					p{
@@ -191,7 +199,9 @@
 					}
 				}
 				.score{
+					flex:1;
 					width: 15vw;
+					align-self: center;
 					font-size: 1.3rem;
 					text-align: right;
 					color:@maincolor;

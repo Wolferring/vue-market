@@ -6,9 +6,13 @@
 				<h2 class="film-name">
 					{{detail.name}} 
 					<span class="label">{{detail.grade}}分</span>
-					<a :href="'http://v.youku.com/v_show/id_'+detail.trailer.youkuId+'.html'" class="label" target="_blank">预告</a>
 				</h2>
 				<p>{{detail.category.replace(/\|/g," - ")}}</p>
+				<a :href="'http://v.youku.com/v_show/id_'+detail.trailer.youkuId+'.html'" target="_blank" v-if="detail.trailer.youkuId!=''">
+					<el-button  type=''>
+						观看预告
+					</el-button>
+				</a>
 				<h3 class="title">影片简介</h3>
 				<p><span>导演:</span>{{detail.director}}</p>
 				<p class="actor"><span>主演:<br></span>
@@ -40,11 +44,9 @@
 	import {mapGetters} from 'vuex'
 	export default {
 		created:function(){
-			// if(!this.detail){
-				let id = this.$route.params.id;
-				this.$store.dispatch('getFilmDetail',id)
-				document.body.scrollTop = 0;
-			// }
+			let id = this.$route.params.id;
+			this.$store.dispatch('getFilmDetail',id)
+			document.body.scrollTop = 0;
 		},		
 		computed:mapGetters({
 			detail:'getFilmDetail'
@@ -68,6 +70,7 @@
 			.title{
 				position: relative;
 				font-size: 1rem;
+				margin: 2vh 0;
 				&:before{
 					content: " ";
 					display: block;
@@ -82,7 +85,7 @@
 			.film-name{
 				line-height: 1rem;
 				font-size: 1rem;
-				margin: 0;
+				margin: 2vh 0;
 				.label{
 					display: inline-block;
 					font-size: .65rem;
@@ -96,6 +99,7 @@
 			}
 			.brief{
 				text-indent:1.5rem;
+				margin: 2vh 0;
 			}
 			.actor{
 				.label{
