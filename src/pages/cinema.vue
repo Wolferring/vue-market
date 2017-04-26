@@ -7,7 +7,7 @@
 				:key="item.pinyin"
 			>
 				<div class="cinema" @click="changeArea(item.pinyin)">
-					<h3>{{item.name}} <span>{{list.length}}</span></h3>
+					<h3>{{item.name}}</h3>
 				</div>
 				<div class="list" v-if="pinyin==item.pinyin">
 				<a 
@@ -126,7 +126,7 @@
 					}
 				}
 				.list{
-					padding: 0 5vw;
+					padding: 0;
 					h4{
 						margin: 1vh 0;
 						font-size: .75rem;
@@ -134,7 +134,9 @@
 					}
 					.shop{
 						border-bottom: 1px solid lighten(@maincolor,30%);
-						padding: 1vh 0;
+						background-color: #fff;
+						padding: 1vh 5vw;
+						margin: 2vh 0;
 						.tip{
 							.el-tag{
 								margin-right: 1vw;

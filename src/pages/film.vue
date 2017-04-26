@@ -1,5 +1,8 @@
 <template>
 <div id="film" v-scroll='getMore'>
+	<div class="reload" v-show="reloading">
+		下拉刷新
+	</div>
 	<div class="tabs">
 		<div class="item" 
 			@click="changeTab('now')" 
@@ -72,7 +75,8 @@
 	export default {
 		data() {
 		  return {
-		    currentTab: 'now'
+		    currentTab: 'now',
+		    reloading:false
 		  };
 		},
 		created:function(){
@@ -88,7 +92,7 @@
 			}
 		},		
 		methods: {
-		  getMore(el) {
+		  getMore(el,event) {
 			if(document.body.scrollTop + window.innerHeight >= el.clientHeight - 100){
 				//由于路由及自定义滚动指令，故返回时还会记录着滚动要素而使得在其他页面滚动时同时出发此处，
 				//故用this.$route.params.type来进行判断
@@ -99,6 +103,16 @@
 				}
 				
 			}
+			if (document.body.scrollTop<=0) {
+				this.reloading = true
+				window.addEventListener('touchmove',this.reload, false)
+			}else{
+				this.reloading = false
+				window.removeEventListener('touchmove',this.reload)
+			}
+		  },
+		  reload:function(e){
+		  	
 		  },
 		  changeTab(name){
 		  	if(this.currentTab==name) return false;
